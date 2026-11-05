@@ -3,7 +3,6 @@
  * Ganti nilai di bawah ini untuk memperbarui informasi di seluruh website
  * (mis. link WhatsApp, sosmed, kontak) tanpa menyentuh kode komponen.
  */
-
 export const EVENT = {
   name: "KAHA FEST",
   edition: "2027",
@@ -28,42 +27,44 @@ export const EVENT = {
     { name: "Instagram", handle: "@kahafest.id", url: "https://www.instagram.com/kahafest.id" },
   ],
 } as const;
-
 export type Artist = {
   name: string;
   role: string;
   note: string;
+  image?: string;
 };
-
 export const GUEST_STARS: Artist[] = [
   {
     name: "Young Lex",
     role: "Rapper • Headliner",
     note: "Penampil utama yang menutup malam festival dengan lagu-lagu hitsnya.",
+    image: "/talents/young-lex.png",
   },
   {
     name: "Badai EC Kerispatih",
     role: "Penyanyi",
     note: "Bintang tamu yang siap membawakan lagu-lagu andalannya di atas panggung GOR Uncak Kapuas.",
+    image: "/talents/badai-ec-kerispatih.png",
   },
   {
     name: "Ecko Show",
     role: "Entertainer • Stand-up",
     note: "Candaan, energi, dan interaksi yang bikin seluruh GOR ikut tertawa.",
+    image: "/talents/ecko-show.png",
   },
   {
     name: "DJ Ayu Cherry",
     role: "DJ Set",
     note: "DJ set penuh groove untuk memanaskan malam dari awal hingga akhir.",
+    image: "/talents/dj-ayu-cherry.png",
   },
 ];
-
 export const LOCAL_HEROES: Artist[] = [
-  { name: "Randa", role: "Biduan", note: "Local Heroes" },
-  { name: "Adelia", role: "Biduan", note: "Local Heroes" },
-  { name: "Sayuti", role: "Biduan", note: "Local Heroes" },
-  { name: "INNOISE", role: "Band", note: "Local Heroes" },
-  { name: "Yessa X Hara", role: "Grup Kolaborasi", note: "Local Heroes" },
+  { name: "Randa", role: "Biduan", note: "Local Heroes", image: "/talents/randa.png" },
+  { name: "Adelia", role: "Biduan", note: "Local Heroes", image: "/talents/adelia.png" },
+  { name: "Sayuti", role: "Biduan", note: "Local Heroes", image: "/talents/sayuti.png" },
+  { name: "INNOISE", role: "Band", note: "Local Heroes", image: "/talents/innoise.png" },
+  { name: "Yessa X Hara", role: "Grup Kolaborasi", note: "Local Heroes", image: "/talents/yessa-x-hara.png" },
 ];
 
 export type RundownItem = {
@@ -72,7 +73,6 @@ export type RundownItem = {
   tag: "Info" | "Seremoni" | "Local Heroes" | "Guest Star";
   highlight?: boolean;
 };
-
 export const RUNDOWN: RundownItem[] = [
   { time: "18.00", title: "Gerbang Dibuka & DJ Warm-Up", tag: "Info" },
   { time: "18.30", title: "Pembukaan Resmi KAHA FEST 2027", tag: "Seremoni" },
@@ -87,7 +87,6 @@ export const RUNDOWN: RundownItem[] = [
   { time: "22.15", title: "Young Lex", tag: "Guest Star", highlight: true },
   { time: "22.55", title: "Penutupan & Sesi Foto Bersama", tag: "Info" },
 ];
-
 export type TicketTier = {
   name: string;
   price: string;
@@ -95,7 +94,6 @@ export type TicketTier = {
   perks: string[];
   featured?: boolean;
 };
-
 export const TICKETS: TicketTier[] = [
   {
     name: "Presale",
@@ -128,7 +126,6 @@ export const TICKETS: TicketTier[] = [
     ],
   },
 ];
-
 export const FAQS: { q: string; a: string }[] = [
   {
     q: "Kapan dan di mana KAHA FEST 2027 diselenggarakan?",
@@ -163,7 +160,6 @@ export const FAQS: { q: string; a: string }[] = [
     a: "Tetap berjalan! KAHA FEST diselenggarakan di dalam GOR sehingga seluruh penampilan dan pengunjung terlindung dari hujan maupun panas. Datanglah dengan nyaman karena festival tetap seru apa pun cuacanya.",
   },
 ];
-
 export const NAV_LINKS = [
   { href: "#tentang", label: "Tentang" },
   { href: "#lineup", label: "Lineup" },
