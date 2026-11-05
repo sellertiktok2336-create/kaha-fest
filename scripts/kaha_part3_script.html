@@ -1,0 +1,72 @@
+
+<script>
+/* ============================================================
+   KONFIGURASI CEPAT - GANTI DI SINI
+   ============================================================ */
+/* Ganti nomor di bawah bila perlu. Format: 62 + nomor tanpa "+", spasi, atau "-".
+   Teks ?text= adalah pesan awal yang otomatis terisi saat pengunjung membuka chat. */
+const WHATSAPP_LINK = "https://wa.me/6282348734447?text=Halo%2C%20saya%20ingin%20membeli%20tiket%20KAHA%20FEST%202027";
+
+/* Terapkan link ke semua tombol tiket sekaligus */
+document.querySelectorAll('a[data-wa]').forEach(function (a) {
+  a.href = WHATSAPP_LINK;
+});
+
+/* ---------- Navbar berubah saat halaman digulir ---------- */
+const navbar = document.getElementById('navbar');
+function onScroll() {
+  navbar.classList.toggle('scrolled', window.scrollY > 24);
+}
+onScroll();
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* ---------- Menu mobile ---------- */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const iconMenu = menuBtn.querySelector('.icon-menu');
+const iconClose = menuBtn.querySelector('.icon-close');
+
+function setMenu(open) {
+  mobileMenu.classList.toggle('open', open);
+  menuBtn.setAttribute('aria-expanded', String(open));
+  menuBtn.setAttribute('aria-label', open ? 'Tutup menu' : 'Buka menu');
+  iconMenu.style.display = open ? 'none' : '';
+  iconClose.style.display = open ? '' : 'none';
+}
+
+menuBtn.addEventListener('click', function () {
+  setMenu(!mobileMenu.classList.contains('open'));
+});
+mobileMenu.querySelectorAll('a').forEach(function (a) {
+  a.addEventListener('click', function () { setMenu(false); });
+});
+
+/* ---------- Hitung mundur menuju 23 Januari 2027, 18.00 WIB ---------- */
+const targetTime = new Date('2027-01-23T18:00:00+07:00').getTime();
+const elD = document.getElementById('cdD');
+const elH = document.getElementById('cdH');
+const elM = document.getElementById('cdM');
+const elS = document.getElementById('cdS');
+
+function pad(n) {
+  return String(n).padStart(2, '0');
+}
+
+function tick() {
+  let diff = targetTime - Date.now();
+  if (diff < 0) diff = 0;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  elD.textContent = pad(d);
+  elH.textContent = pad(h);
+  elM.textContent = pad(m);
+  elS.textContent = pad(s);
+}
+
+tick();
+setInterval(tick, 1000);
+</script>
+</body>
+</html>
